@@ -3,7 +3,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../store";
 import { loginAction, logouAction } from "../../store/actions/userActions";
 import { setTokenAction } from "../../store/actions/tokenActions";
-interface ICenterProps {}
+import { getToken, dynamicAuthor } from "../../servers/servers";
+interface ICenterProps { }
 
 const Center: React.FC<ICenterProps> = (props) => {
   const { userReducer, tokenReducer } = useSelector(
@@ -27,6 +28,16 @@ const Center: React.FC<ICenterProps> = (props) => {
     dispatch(setTokenAction("123"));
   }, [dispatch]);
 
+  const getData = async () => {
+    const res = await getToken()
+    console.log("getData -> res", res)
+  }
+
+  const getData2 = async () => {
+    const res = await dynamicAuthor({ encryptedData: "444", iv: "555" })
+    console.log("getData -> res", res)
+  }
+
   return (
     <div>
       <h1>Center {userReducer.status}</h1>
@@ -35,6 +46,8 @@ const Center: React.FC<ICenterProps> = (props) => {
       <button onClick={dispatchSetAction}>
         设置token {tokenReducer.token}
       </button>
+      <button onClick={getData}>getToken</button>
+      <button onClick={getData2}>授权手机号登录</button>
     </div>
   );
 };

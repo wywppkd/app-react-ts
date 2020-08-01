@@ -6,6 +6,7 @@ import { Provider } from "react-redux";
 import { configureStore } from "./store";
 import Center from "./pages/Center/Center";
 import ShoppingCart from "./pages/ShoppingCart/ShoppingCart";
+import "normalize.css"
 
 /**
  * 获取store仓库

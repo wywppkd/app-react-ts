@@ -4,6 +4,7 @@ import { RootState } from "../../store";
 import { loginAction, logouAction } from "../../store/actions/userActions";
 import { setTokenAction } from "../../store/actions/tokenActions";
 import { getToken, dynamicAuthor } from "../../servers/servers";
+
 interface ICenterProps { }
 
 const Center: React.FC<ICenterProps> = (props) => {
